@@ -1,6 +1,7 @@
 package com.cooksys.ftd.assignments.control;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import java.util.Arrays;
 
 /**
  * The Fibonacci sequence is simply and recursively defined: the first two elements are `1`, and
@@ -23,8 +24,25 @@ public class Fibonacci {
      * @return the calculated element
      * @throws IllegalArgumentException if the given index is less than zero
      */
-    public static int atIndex(int i) throws IllegalArgumentException {
-        throw new NotImplementedException();
+
+
+    static int atIndex(int i) throws IllegalArgumentException{
+        if (i<0){
+            throw new IllegalArgumentException();
+        }else{
+            int k;
+            int a;
+            int b;
+            k=0;
+            a=1;
+            b=1;
+            while(k<=i){
+                k = a+b;
+                a=b;
+                b=k;
+            }
+            return a;
+        }
     }
 
     /**
@@ -37,8 +55,33 @@ public class Fibonacci {
      * @throws IllegalArgumentException if either the given start or end is negative, or if the
      *                                  given end is less than the given start
      */
-    public static int[] slice(int start, int end) throws IllegalArgumentException {
-        throw new NotImplementedException();
+    public static int[] slice(int start, int end) throws IllegalArgumentException{
+        if(start<0){
+            throw new IllegalArgumentException();
+        }else if(end<0){
+            throw new IllegalArgumentException();
+        }else{
+            int k;
+            int a;
+            int b;
+            int[] sequence = new int[end];
+            k=0;
+            a=1;
+            b=1;
+            while(k<=end){
+                for(int i=0; i<end; i++){
+                    k = a+b;
+                    sequence[i] = a;
+                    a=b;
+                    b=k;
+                }
+                k = a+b;
+                a=b;
+                b=k;
+            }
+            sequence = Arrays.copyOfRange(sequence, start, end);
+            return sequence;
+        }
     }
 
     /**
@@ -48,7 +91,29 @@ public class Fibonacci {
      * @return the beginning of the fibonacci sequence, up to the given count, as an array of int elements
      * @throws IllegalArgumentException if the given count is negative
      */
-    public static int[] fibonacci(int count) throws IllegalArgumentException {
-        throw new NotImplementedException();
+    public static int[] fibonacci(int count) throws IllegalArgumentException{
+        if(count<0){
+            throw new IllegalArgumentException();
+        }else{
+            int k;
+            int a;
+            int b;
+            int[] numArray = new int[count];
+            k=0;
+            a=1;
+            b=1;
+            while(k<=count){
+                for(int i=0; i<count; i++){
+                    k = a+b;
+                    numArray[i] = a;
+                    a=b;
+                    b=k;
+                }
+                k = a+b;
+                a=b;
+                b=k;
+            }
+            return numArray;
+        }
     }
 }

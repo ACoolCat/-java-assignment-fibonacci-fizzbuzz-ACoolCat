@@ -1,6 +1,6 @@
 package com.cooksys.ftd.assignments.control;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import java.util.Arrays;
 
 /**
  * FizzBuzz is an old programming exercise.
@@ -25,8 +25,16 @@ public class FizzBuzz {
      * @return `true` if a is evenly divisible by b, `false` otherwise
      * @throws IllegalArgumentException if b is zero
      */
-    public static boolean divides(int a, int b) throws IllegalArgumentException {
-        throw new NotImplementedException();
+    public static boolean divides(int a, int b) throws IllegalArgumentException{
+        if(b == 0){
+            throw new IllegalArgumentException();
+        }else{
+            if(a%b != 0){
+                return false;
+            }else{
+                return true;
+            }
+        }
     }
 
     /**
@@ -40,8 +48,16 @@ public class FizzBuzz {
      * @param n the number to generate a message for
      * @return a message according to the format above, or null if n is not divisible by either 3 or 5
      */
-    public static String message(int n) {
-        throw new NotImplementedException();
+    public static String message(int n){
+        if(n%15 == 0){
+            return n + ": FizzBuzz";
+        }else if(n%5 == 0){
+            return n + ": Buzz";
+        }else if(n%3 == 0){
+            return n + ": Fizz";
+        }else{
+            return null;
+        }
     }
 
     /**
@@ -54,16 +70,34 @@ public class FizzBuzz {
      * @return an array of divisibility messages
      * @throws IllegalArgumentException if the given end is less than the given start
      */
-    public static String[] messages(int start, int end) throws IllegalArgumentException {
-        throw new NotImplementedException();
+    public static String[] messages(int start, int end) throws IllegalArgumentException{
+        if(end<start){
+            throw new IllegalArgumentException();
+        }else{
+            String[] fizzBuzz = new String[end] ;
+            for(int i=0; i<fizzBuzz.length; i++){
+                if(i%15 == 0){
+                    fizzBuzz[i] = i+ ": FizzBuzz";
+                }else if(i%5 == 0){
+                    fizzBuzz[i] = i+ ": Buzz";
+                }else if(i%3 == 0){
+                    fizzBuzz[i] = i+ ": Fizz";
+                }else{
+                    fizzBuzz[i] = null;
+                }
+            }
+            fizzBuzz = Arrays.copyOfRange(fizzBuzz, start, end);
+            return fizzBuzz;
+        }
     }
+
 
     /**
      * For this main method, iterate over the numbers 1 through 115 and print
      * the relevant messages to sysout
      */
     public static void main(String[] args) {
-        throw new NotImplementedException();
+        System.out.println(messages(1, 115));
     }
 
 }
