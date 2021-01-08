@@ -1,6 +1,9 @@
 package com.cooksys.ftd.assignments.control;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 /**
  * FizzBuzz is an old programming exercise.
@@ -75,18 +78,26 @@ public class FizzBuzz {
             throw new IllegalArgumentException();
         }else{
             String[] fizzBuzz = new String[end] ;
-            for(int i=0; i<fizzBuzz.length; i++){
-                if(i%15 == 0){
-                    fizzBuzz[i] = i+ ": FizzBuzz";
-                }else if(i%5 == 0){
-                    fizzBuzz[i] = i+ ": Buzz";
-                }else if(i%3 == 0){
-                    fizzBuzz[i] = i+ ": Fizz";
-                }else{
+            for(int i=1; i< fizzBuzz.length; i++){
+                if(i == 0){
                     fizzBuzz[i] = null;
+                }else if(i % 15 == 0){
+                    fizzBuzz[i]=i+ ": FizzBuzz";
+                }else if(i %3 == 0){
+                    fizzBuzz[i]=i+ ": Fizz";
+                }else if(i % 5 == 0){
+                    fizzBuzz[i] =i+ ": Buzz";
                 }
             }
             fizzBuzz = Arrays.copyOfRange(fizzBuzz, start, end);
+            List<String> list = new ArrayList<String>();
+            for(String s : fizzBuzz){
+                if(s != null){
+                    list.add(s);
+                }
+            }
+
+            fizzBuzz = list.toArray(new String[list.size()]);
             return fizzBuzz;
         }
     }
